@@ -20,9 +20,19 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('content.home');
 });
+
 Route::get('/blog-grid', function () {
     return view('content.blog-grid');
 });
+
 Route::get('/blog-single', function () {
     return view('content.blog-single');
+});
+
+Route::get('/sing-in', function () {
+    return view('content.sing-in');
+});
+
+Route::get('/sing-up', function () {
+    return view('content.sing-up');
 });

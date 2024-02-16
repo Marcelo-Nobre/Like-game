@@ -2,7 +2,7 @@
     <div class="events">
         <div class="container">
             <div class="plant">
-                <img src="imgs/wallpaperflare.com_wallpaper.jpg" alt="">
+                <img src="{{ asset('imgs/wallpaperflare.com_wallpaper.jpg') }}" alt="">
                 <h2>Kobe Steel plant that supplied</h2>
                 <ul>
                     <li>
@@ -35,8 +35,8 @@
                     urna sit amet metus. In sollicitudin quam est, pellentesque consectetur felis fermentum vitae.
                 </p>
                 <div class="image">
-                    <img src="imgs/dark-souls-3-pc-game-wide-1920x1080.jpg" alt="">
-                    <img src="imgs/dark-souls-fanart-4k-jd-1920x1080.jpg" alt="">
+                    <img src="{{ asset('imgs/dark-souls-3-pc-game-wide-1920x1080.jpg') }}" alt="">
+                    <img src="{{ asset('imgs/dark-souls-fanart-4k-jd-1920x1080.jpg') }}" alt="">
                 </div>
                 <h2>The powerful force of humanity</h2>
                 <p>
@@ -67,15 +67,15 @@
                     <h2>Related Posts</h2>
                     <div class="coding">
                         <div class="free">
-                            <img src="imgs/download (1).jpg" alt="">
+                            <img src="{{ asset('imgs/download (1).jpg') }}" alt="">
                             <h5>Free advertising for your online business</h5>
                         </div>
                         <div class="free">
-                            <img src="imgs/download (3).jpg" alt="">
+                            <img src="{{ asset('imgs/download (3).jpg') }}" alt="">
                             <h5>9 simple ways to improve your design skills</h5>
                         </div>
                         <div class="free">
-                            <img src="imgs/images (3).jpg" alt="">
+                            <img src="{{ asset('imgs/images (3).jpg') }}" alt="">
                             <h5>Tips to quickly improve your coding speed.</h5>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
     </div>
 
     <div class="dolor">
-        <img src="imgs/shape-16.svg" alt="">
+        <img src="{{ asset('imgs/shape-16.svg') }}" alt="">
         <div class="container">
             <div class="growing">
             <h2>Join with 5000+ Startups Growing with Base.</h2>

@@ -736,7 +736,7 @@ a.active {
     align-items: center;
     background-size: cover;
     position: relative;
-    background-image: url(asset('../imgs/shape-08.svg'));
+    background-image: url(../imgs/shape-08.svg);
     padding: 120px 0px 262px;
     background-position: right center;
 }

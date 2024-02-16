@@ -2,7 +2,7 @@
 <div class="header">
     <div class="container">
         <div class="logo">
-            <img class="base-img" src="imgs/main-logo.png" alt="">
+            <img class="base-img" src="{{ asset('imgs/main-logo.png') }}" alt="">
             <h1>Base</h1>
         </div>
         <div class="toggle">

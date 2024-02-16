@@ -17,10 +17,10 @@
                 </div>
             </div>
             <div class="shape">
-                <img class="shape-2"  src="imgs/shape-02.svg" alt="">
-                <img class="shape-3"  src="imgs/shape-03.svg" alt="">
+                <img class="shape-2"  src="{{ asset('imgs/shape-02.svg') }}" alt="">
+                <img class="shape-3"  src="{{ asset('imgs/shape-03.svg') }}" alt="">
                 <div class="blue">
-                    <img src="imgs/pngimg.com_assassins_creed_PNG82.png" alt="">
+                    <img src="{{ asset('imgs/pngimg.com_assassins_creed_PNG82.png') }}" alt="">
                 </div>
             </div>
         </div>
@@ -55,14 +55,14 @@
         <div class="container">
             <div class="img-all">
                 <div class="img-1">
-                    <img class="shape-5" src="imgs/shape-05.svg" alt="">
-                    <img src="imgs/about-01.png" alt="">
-                    <img src="imgs/about-02.png" alt="">
+                    <img class="shape-5" src="{{ asset('imgs/shape-05.svg') }}" alt="">
+                    <img src="{{ asset('imgs/about-01.png') }}" alt="">
+                    <img src="{{ asset('imgs/about-02.png') }}" alt="">
                 </div>
                 <div class="img-2">
-                    <img class="shape-6" src="imgs/shape-06.svg" alt="">
-                    <img src="imgs/about-03.png" alt="">
-                    <img class="shape-7" src="imgs/shape-07.svg" alt="">
+                    <img class="shape-6" src="{{ asset('imgs/shape-06.svg') }}" alt="">
+                    <img src="{{ asset('imgs/about-03.png') }}" alt="">
+                    <img class="shape-7" src="{{ asset('imgs/shape-07.svg') }}" alt="">
                 </div>
             </div>
             <div class="animate">
@@ -89,9 +89,9 @@
     </div>
     <div class="creative">
         <div class="text">
-            <img src="imgs/shape-09.svg" alt="">
-            <img src="imgs/shape-10.svg" alt="">
-            <img src="imgs/shape-11.svg" alt="">
+            <img src="{{ asset('imgs/shape-09.svg') }}" alt="">
+            <img src="{{ asset('imgs/shape-10.svg') }}" alt="">
+            <img src="{{ asset('imgs/shape-11.svg') }}" alt="">
             <h3>Meet With Our Creative Dedicated Team</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing
               elit. In convallis tortor eros. Donec vitae tortor
@@ -101,7 +101,7 @@
             <div class="cards">
               <div class="card">
                 <div class="image">
-                  <img src="imgs/team-01.png" alt="">
+                  <img src="{{ asset('imgs/team-01.png') }}" alt="">
                   <div class="bef">
                     <a href=""><i class="fa-brands fa-tiktok"></i></a>
                     <a href=""><i class="fa-brands fa-youtube"></i></a>
@@ -114,7 +114,7 @@
               </div>
               <div class="card">
                 <div class="image">
-                  <img src="imgs/team-02.png" alt="">
+                  <img src="{{ asset('imgs/team-02.png') }}" alt="">
                   <div class="bef">
                     <a href=""><i class="fa-brands fa-tiktok"></i></a>
                     <a href=""><i class="fa-brands fa-youtube"></i></a>
@@ -127,7 +127,7 @@
               </div>
               <div class="card">
                 <div class="image">
-                  <img src="imgs/team-03.png" alt="">
+                  <img src="{{ asset('imgs/team-03.png') }}" alt="">
                   <div class="bef">
                     <a href=""><i class="fa-brands fa-tiktok"></i></a>
                     <a href=""><i class="fa-brands fa-youtube"></i></a>
@@ -152,32 +152,32 @@
             </div>
             <div class="sections">
                 <div class="startups">
-                    <img src="imgs/icon-04.svg" alt="">
+                    <img src="{{ asset('imgs/icon-04.svg') }}" alt="">
                     <h4>Crafted for Startups</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.</p>
                 </div>
                 <div class="startups">
-                    <img src="imgs/icon-05.svg" alt="">
+                    <img src="{{ asset('imgs/icon-05.svg') }}" alt="">
                     <h4>High-quality Design</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.</p>
                 </div>
                 <div class="startups">
-                    <img src="imgs/icon-06.svg" alt="">
+                    <img src="{{ asset('imgs/icon-06.svg') }}" alt="">
                     <h4>All Essential Sections</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.</p>
                 </div>
                 <div class="startups">
-                    <img src="imgs/icon-07.svg" alt="">
+                    <img src="{{ asset('imgs/icon-07.svg') }}" alt="">
                     <h4>Speed Optimized</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.</p>
                 </div>
                 <div class="startups">
-                    <img src="imgs/icon-05.svg" alt="">
+                    <img src="{{ asset('imgs/icon-05.svg') }}" alt="">
                     <h4>Fully Customizable</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.</p>
                 </div>
                 <div class="startups">
-                    <img src="imgs/icon-06.svg" alt="">
+                    <img src="{{ asset('imgs/icon-06.svg') }}" alt="">
                     <h4>Regular Updates</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.</p>
                 </div>
@@ -185,11 +185,11 @@
         </div>
     </div>
     <div class="Starter">
-        <img src="imgs/shape-06.svg" alt="">
-        <img src="imgs/shape-03.svg" alt="">
-        <img src="imgs/shape-07.svg" alt="">
-        <img src="imgs/shape-12.svg" alt="">
-        <img src="imgs/shape-13.svg" alt="">
+        <img src="{{ asset('imgs/shape-06.svg') }}" alt="">
+        <img src="{{ asset('imgs/shape-03.svg') }}" alt="">
+        <img src="{{ asset('imgs/shape-07.svg') }}" alt="">
+        <img src="{{ asset('imgs/shape-12.svg') }}" alt="">
+        <img src="{{ asset('imgs/shape-13.svg') }}" alt="">
         <div class="container">
             <div class="great">
                 <h2>We Offer Great Affordable Premium Prices.</h2>
@@ -296,9 +296,9 @@
                     <div class="testimonial swiper-slide">
                         <span class="span"></span>
                         <div class="justo">
-                            <img class="img-testimonial" src="imgs/testimonial.png" alt="">
+                            <img class="img-testimonial" src="{{ asset('imgs/testimonial.png') }}" alt="">
                             <div class="lightning">
-                                <img src="imgs/lightning.png" alt="">
+                                <img src="{{ asset('imgs/lightning.png') }}" alt="">
                                 <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dolor diam, feugiat quis enim sed, ullamcorper semper ligula.
                                 Mauris consequat justo volutpat.
@@ -308,7 +308,7 @@
                                         <span>Devid Smith</span>
                                         <span>Founter @democompany</span>
                                     </div>
-                                    <img src="imgs/brand-light-02.svg" alt="">
+                                    <img src="{{ asset('imgs/brand-light-02.svg') }}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -317,9 +317,9 @@
                     <div class="testimonial swiper-slide">
                         <span class="span"></span>
                         <div class="justo">
-                            <img class="img-testimonial" src="imgs/testimonial.png" alt="">
+                            <img class="img-testimonial" src="{{ asset('imgs/testimonial.png') }}" alt="">
                             <div class="lightning">
-                                <img src="imgs/lightning.png" alt="">
+                                <img src="{{ asset('imgs/lightning.png') }}" alt="">
                                 <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dolor diam, feugiat quis enim sed, ullamcorper semper ligula.
                                 Mauris consequat justo volutpat.
@@ -329,7 +329,7 @@
                                         <span>Devid Smith</span>
                                         <span>Founter @democompany</span>
                                     </div>
-                                    <img src="imgs/brand-light-02.svg" alt="">
+                                    <img src="{{ asset('imgs/brand-light-02.svg') }}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -338,9 +338,9 @@
                     <div class="testimonial swiper-slide">
                 <span class="span"></span>
                 <div class="justo">
-                    <img class="img-testimonial" src="imgs/testimonial.png" alt="">
+                    <img class="img-testimonial" src="{{ asset('imgs/testimonial.png') }}" alt="">
                     <div class="lightning">
-                        <img src="imgs/lightning.png" alt="">
+                        <img src="{{ asset('imgs/lightning.png') }}" alt="">
                         <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dolor diam, feugiat quis enim sed, ullamcorper semper ligula.
                         Mauris consequat justo volutpat.
@@ -350,7 +350,7 @@
                                 <span>Devid Smith</span>
                                 <span>Founter @democompany</span>
                             </div>
-                            <img src="imgs/brand-light-02.svg" alt="">
+                            <img src="{{ asset('imgs/brand-light-02.svg') }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -373,10 +373,10 @@
         </div>
     </div>
     <div class="global">
-        <img src="imgs/shape-11.svg" alt="">
-        <img src="imgs/shape-07.svg" alt="">
-        <img src="imgs/shape-14.svg" alt="">
-        <img src="imgs/shape-15.svg" alt="">
+        <img src="{{ asset('imgs/shape-11.svg') }}" alt="">
+        <img src="{{ asset('imgs/shape-07.svg') }}" alt="">
+        <img src="{{ asset('imgs/shape-14.svg') }}" alt="">
+        <img src="{{ asset('imgs/shape-15.svg') }}" alt="">
         <div class="container">
             <div class="happy">
                 <h2>785</h2>
@@ -406,12 +406,12 @@
                 </p>
             </div>
             <div class="icons">
-                <a href="#"><img src="imgs/brand-light-01.svg" alt=""></a>
-                <a href="#"><img src="imgs/brand-light-02.svg" alt=""></a>
-                <a href="#"><img src="imgs/brand-light-03.svg" alt=""></a>
-                <a href="#"><img src="imgs/brand-light-04.svg" alt=""></a>
-                <a href="#"><img src="imgs/brand-light-05.svg" alt=""></a>
-                <a href="#"><img src="imgs/brand-light-06.svg" alt=""></a>
+                <a href="#"><img src="{{ asset('imgs/brand-light-01.svg" al') }}"=""></a>
+                <a href="#"><img src="{{ asset('imgs/brand-light-02.svg" al') }}"=""></a>
+                <a href="#"><img src="{{ asset('imgs/brand-light-03.svg" al') }}"=""></a>
+                <a href="#"><img src="{{ asset('imgs/brand-light-04.svg" al') }}"=""></a>
+                <a href="#"><img src="{{ asset('imgs/brand-light-05.svg" al') }}"=""></a>
+                <a href="#"><img src="{{ asset('imgs/brand-light-06.svg" al') }}"=""></a>
             </div>
         </div>
     </div>
@@ -427,7 +427,7 @@
             <div class="cards">
                 <div class="free">
                     <div class="code">
-                        <img src="imgs/categories-02000.png" alt="">
+                        <img src="{{ asset('imgs/categories-02000.png') }}" alt="">
                         <div class="read">
                             <a href="#">Read More</a>
                         </div>
@@ -448,7 +448,7 @@
                 </div>
                 <div class="free">
                     <div class="code">
-                        <img src="imgs/top-game-01.jpg" alt="">
+                        <img src="{{ asset('imgs/top-game-01.jpg') }}" alt="">
                         <div class="read">
                             <a href="#">Read More</a>
                         </div>
@@ -469,7 +469,7 @@
                 </div>
                 <div class="free">
                     <div class="code">
-                        <img src="imgs/top-game-03.jpg" alt="">
+                        <img src="{{ asset('imgs/top-game-03.jpg') }}" alt="">
                         <div class="read">
                             <a href="#">Read More</a>
                         </div>
@@ -502,7 +502,7 @@
             </div>
             <div class="blogs">
                 <div class="number">
-                    <img src="imgs/shape-03.svg" alt="">
+                    <img src="{{ asset('imgs/shape-03.svg') }}" alt="">
                     <div class="email">
                         <div class="media">
                             <h4>Email Address</h4>
@@ -598,7 +598,7 @@
 
     </div>
     <div class="dolor">
-        <img src="imgs/shape-16.svg" alt="">
+        <img src="{{ asset('imgs/shape-16.svg') }}" alt="">
         <div class="container">
             <div class="growing">
             <h2>Join with 5000+ Startups Growing with Base.</h2>
