@@ -406,12 +406,12 @@
                 </p>
             </div>
             <div class="icons">
-                <a href="#"><img src="{{ asset('imgs/brand-light-01.svg" al') }}"=""></a>
-                <a href="#"><img src="{{ asset('imgs/brand-light-02.svg" al') }}"=""></a>
-                <a href="#"><img src="{{ asset('imgs/brand-light-03.svg" al') }}"=""></a>
-                <a href="#"><img src="{{ asset('imgs/brand-light-04.svg" al') }}"=""></a>
-                <a href="#"><img src="{{ asset('imgs/brand-light-05.svg" al') }}"=""></a>
-                <a href="#"><img src="{{ asset('imgs/brand-light-06.svg" al') }}"=""></a>
+                <a href="#"><img src="{{ asset('imgs/brand-light-01.svg') }}" alt=""></a>
+                <a href="#"><img src="{{ asset('imgs/brand-light-02.svg') }}" alt=""></a>
+                <a href="#"><img src="{{ asset('imgs/brand-light-03.svg') }}" alt=""></a>
+                <a href="#"><img src="{{ asset('imgs/brand-light-04.svg') }}" alt=""></a>
+                <a href="#"><img src="{{ asset('imgs/brand-light-05.svg') }}" alt=""></a>
+                <a href="#"><img src="{{ asset('imgs/brand-light-06.svg') }}" alt=""></a>
             </div>
         </div>
     </div>
