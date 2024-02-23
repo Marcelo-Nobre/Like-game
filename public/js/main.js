@@ -5,80 +5,92 @@
 let btnDarkMode = document.getElementsByClassName("dark-mode");
 let toggle = document.querySelector(".toggle");
 
-let logoImg = document.images[0]
-let footerImg = document.images[70]
-
-
-
-let el = document.querySelector(".scroller");
-let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
 let testimonial = document.querySelectorAll(".testimonial")
 
+window.updateScrollerBar = () => {
+    let scroller = document.querySelector(".scroller");
 
-window.addEventListener("scroll", () => {
+    if (!scroller) {
+        return;
+    }
+
+    let pageHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     let scrollTop = document.documentElement.scrollTop;
-    el.style.width = `${(scrollTop / height) * 100}%`;
-})
+    scroller.style.width = `${(scrollTop / pageHeight) * 100}%`;
+};
 
-
-let header = document.querySelector(".header");
-
-let logo = document.querySelector(".logo")
-
-
-
-let button = document.getElementsByClassName("sing-up")[0]
-
-let sing = document.querySelector(".sing a");
-button.style.backgroundColor = "#ffffff26"
-sing.style.color = "#fff"
 toggle.style.padding = "15px";
-
 
 // scroll
 
 window.addEventListener("scroll", () => {
+    window.updateScrollerBar();
     let scrollTop = document.documentElement.scrollTop;
-    if(scrollTop > 40) {
-        header.setAttribute("class", "header scroll")
-        logo.style.marginTop = "0"
-        toggle.style.padding = "0px";
-        button.style.backgroundColor = "#4e6bff";
-        sing.style.color = "gray"
 
+    let topMenuNav = document.querySelector('[data-id="top-menu"]');
 
-    }else {
-        header.setAttribute("class", "header")
-        logo.style.marginTop = "12px"
-        button.style.backgroundColor = "#ffffff26";
-        button.setAttribute("class", "sing-up")
-        toggle.style.padding = "15px";
-        sing.style.color = "#fff"
-
-
-
+    if (!topMenuNav) {
+        return;
     }
+
+    let socialLinks = topMenuNav.querySelector('[data-id="social-links"]');
+    let mainLinks = topMenuNav.querySelector('[data-id="main-links"]');
+    let logo = topMenuNav.querySelector('[data-id="logo"]');
+
+    let shrink = (element, toShrink = true) => {
+        if (!element) {
+            return;
+        }
+
+        if (toShrink) {
+            logo.classList.add('h-8');
+            logo.classList.remove('h-16');
+
+            element.classList.add('p-2');
+            element.classList.remove('p-4');
+            return;
+        }
+
+        element.classList.add('p-4');
+        element.classList.remove('p-2');
+
+        logo.classList.add('h-16');
+        logo.classList.remove('h-8');
+    }
+
+    if(scrollTop > 40) {
+        shrink(socialLinks, true);
+        shrink(mainLinks, true);
+        return
+    }
+
+    shrink(socialLinks, false);
+    shrink(mainLinks, false);
 })
 
-let btn = document.querySelector("button.up")
-
-//scroll
-
+// Go to top
 window.onscroll = function () {
-    if(window.scrollY >= 600) {
-        btn.classList.add("time");
-    }else {
-        btn.classList.remove("time");
+    let goToTopBtn = document.querySelector("button.up");
+
+    if (!goToTopBtn) {
+        return;
     }
+
+    if(window.scrollY >= 600) {
+        goToTopBtn.classList.add("time");
+        return
+    }
+
+    goToTopBtn.classList.remove("time");
 }
-btn.onclick = function () {
+
+document.querySelector("button.up")?.addEventListener('click', () => {
     window.scrollTo({
         left:0,
         top: 0,
         behavior: "smooth",
     })
-}
-
+});
 
 function darkMode() {
     let body = document.body;
@@ -249,7 +261,7 @@ generategallery()
 
 
 const filterIcon = document.querySelectorAll(".items span");
-const filterableCards = document.querySelectorAll(".gallery .free"); 
+const filterableCards = document.querySelectorAll(".gallery .free");
 
 // console.log(filterIcon, filterableCards)
 
@@ -265,7 +277,7 @@ const filterCards = e => {
         }
     })
 }
-    
+
 
 filterIcon.forEach(button => button.addEventListener("click", filterCards))
 
@@ -297,6 +309,5 @@ function check() {
       } else {
         priceOne.innerHTML = "<div><h3>$29</h3>/per month</div>"
         priceTwo.innerHTML = "<div><h3>$59</h3>/per month</div>"
-        pricethere.innerHTML = "<div><h3>$139</h3>/per month</div>" 
+        pricethere.innerHTML = "<div><h3>$139</h3>/per month</div>"
       };}
-             

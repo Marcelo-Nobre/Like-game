@@ -30,7 +30,7 @@ html {
     scroll-behavior: smooth;
 }
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Encode Sans Condensed', Sans-serif, 'Open Sans';
     color: var(--text--color);
     background-color: var(--background-color);
 }

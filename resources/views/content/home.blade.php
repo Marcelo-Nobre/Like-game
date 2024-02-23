@@ -1,6 +1,25 @@
 <x-layouts.content>
+    <header class="relative flex items-center justify-center h-auto mb-12 overflow-hidden z-20">
+        <div class="relative z-20 p-3 px-0 mx-0 w-full text-center py-24 lg:py-56 bg-gradient-to-t to-transparent from-black">
+            <h1 class="mb-4 text-4xl font-bold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Administração de Concomínios</h1>
+            <p class="mb-8 text-lg font-normal text-white lg:text-xl sm:px-16 lg:px-48">Conheça mais nossos serviços</p>
+            <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
+                <a href="#" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-full bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:ring-yellow-300 dark:focus:ring-yellow-900">
+                    Iniciar aqui
+                    <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <video autoplay loop muted class="absolute z-10 w-auto min-w-full min-h-full max-w-none">
+          <source src="{{ asset('imgs/video-home.mp4') }}" type="video/mp4" />
+          Seu navegador não comporta a tag video
+        </video>
+    </header>
 
-    <div class="landing">
+    {{-- BEGIN hero 2 --}}
+    {{-- <div class="landing">
         <div class="container">
             <div class="user">
                 <h1>We specialize in UI/UX, Web Development, Digital Marketing.</h1>
@@ -24,7 +43,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
+    {{-- END hero 2 --}}
+
     <div class="features">
         <div class="container">
             <div class="wolf">
@@ -51,6 +72,40 @@
 
         </div>
     </div>
+
+    <div class="w-full bg-gray-900 py-6">
+        <h1 class="mb-4 text-4xl font-bold tracking-tight leading-none text-white text-center md:text-5xl lg:text-6xl">
+            Beneficios HFlex
+        </h1>
+
+        <div class="flex justify-center py-2 space-x-6">
+            @foreach (range(1, 4) as $item)
+                <div class="max-w-56 p-2 bg-white border border-gray-200 rounded-lg shadow">
+                    <a href="#">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 text-center">Item 1</h5>
+                    </a>
+
+                    <div class="flex items-center justify-center">
+                        <hr class="border-b border-gray-700 w-5 mx-auto">
+                    </div>
+
+                    <p class="mb-3 font-normal text-gray-700">
+                        Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+                    </p>
+
+                    <div class="flex items-center justify-center">
+                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-amber-600 rounded-lg hover:bg-amber-700 focus:ring-4 focus:outline-none focus:ring-amber-300 dark:focus:ring-amber-800">
+                            Saber mais
+                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+
     <div class="contact">
         <div class="container">
             <div class="img-all">
@@ -144,7 +199,7 @@
     <div class="service">
         <div class="container">
             <div class="phasellus">
-                <h2>We Offer The Best Quality Service for You</h2>
+                <h2>Nossos Serviços</h2>
                 <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor eros.
                 Donec vitae tortor lacus. Phasellus aliquam ante in maximus.
@@ -201,7 +256,7 @@
             <div class="bill">
                 <span>Bill Monthly</span>
                 <div class="checkbox-wrapper-3">
-                    <input class="checkbox" type="checkbox" id="cbx-3" onclick="check()">
+                    <input class="checkbox toggle toggle-lg" type="checkbox" id="cbx-3" onclick="check()">
                     <label for="cbx-3" class="toggle">
                         <span></span>
                     </label>
@@ -427,7 +482,28 @@
             <div class="cards">
                 <div class="free">
                     <div class="code">
-                        <img src="{{ asset('imgs/categories-02000.png') }}" alt="">
+                        <img src="{{ asset('imgs/blog-01.png') }}" alt="">
+                        <div class="read">
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="simple">
+                            <div class="your">
+                                <i class="fa-solid fa-user"></i>
+                                <p>Musharof Chy</p>
+                            </div>
+                            <div class="your">
+                                <i class="fa-solid fa-database"></i>
+                                <p>{{ date('j M, Y') }}</p>
+                            </div>
+                        </div>
+                        <h4>Tips to quickly improve your coding speed.</h4>
+                    </div>
+                </div>
+                <div class="free">
+                    <div class="code">
+                        <img src="{{ asset('imgs/blog-01.png') }}" alt="">
                         <div class="read">
                             <a href="#">Read More</a>
                         </div>
@@ -448,28 +524,7 @@
                 </div>
                 <div class="free">
                     <div class="code">
-                        <img src="{{ asset('imgs/top-game-01.jpg') }}" alt="">
-                        <div class="read">
-                            <a href="#">Read More</a>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <div class="simple">
-                            <div class="your">
-                                <i class="fa-solid fa-user"></i>
-                                <p>Musharof Chy</p>
-                            </div>
-                            <div class="your">
-                                <i class="fa-solid fa-database"></i>
-                                <p>25 Dec, 2025</p>
-                            </div>
-                        </div>
-                        <h4>Tips to quickly improve your coding speed.</h4>
-                    </div>
-                </div>
-                <div class="free">
-                    <div class="code">
-                        <img src="{{ asset('imgs/top-game-03.jpg') }}" alt="">
+                        <img src="{{ asset('imgs/blog-01.png') }}" alt="">
                         <div class="read">
                             <a href="#">Read More</a>
                         </div>

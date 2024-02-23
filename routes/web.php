@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', fn () => view('welcome'));
+Route::get('/welcome', fn () => view('welcome'));
+
+Route::redirect('/', 'home');
 
 Route::get('/home', fn () => view('content.home'));
 
@@ -38,3 +40,5 @@ Route::prefix('chat')
         Route::get('/{room?}', ChatRoomController::class)->name('room');
         Route::post('/message', SendMessageController::class)->name('send.message');
     });
+
+Route::get('/demo/home', fn () => view('demo.home'));
