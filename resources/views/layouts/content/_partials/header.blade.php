@@ -41,7 +41,7 @@
 
 <nav
     data-id="top-menu"
-    class="min-h-12 bg-gray-900 border-gray-200 fixed w-full z-50 top-0 start-0 dark:bg-gray-900 dark:border-gray-700"
+    class="min-h-12 bg-gray-900 border-gray-700 fixed w-full z-50 top-0 start-0"
 >
     <div
         data-id="social-links"
@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    <div class="w-full border-b border-gray-200 dark:border-gray-600"></div>
+    <div class="w-full border-b border-gray-600"></div>
 
     <div
         data-id="main-links"
@@ -70,14 +70,14 @@
         <div class="flex md:order-2 space-x-3 md:space-x-3 rtl:space-x-reverse">
             <a
                 href="#!"
-                class="text-white bg-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-md text-sm px-4 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
+                class="text-white bg-amber-600 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-md text-sm px-4 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
             >
                 2° Via Boleto
             </a>
 
             <a
                 href="#!"
-                class="text-white bg-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-md text-sm px-4 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
+                class="text-white bg-amber-600 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-md text-sm px-4 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
             >
                 Área do cliente
             </a>
