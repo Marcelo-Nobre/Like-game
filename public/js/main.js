@@ -3,7 +3,6 @@
 
 // html elements
 let btnDarkMode = document.getElementsByClassName("dark-mode");
-let toggle = document.querySelector(".toggle");
 
 let testimonial = document.querySelectorAll(".testimonial")
 
@@ -18,8 +17,6 @@ window.updateScrollerBar = () => {
     let scrollTop = document.documentElement.scrollTop;
     scroller.style.width = `${(scrollTop / pageHeight) * 100}%`;
 };
-
-toggle.style.padding = "15px";
 
 // scroll
 
@@ -282,9 +279,7 @@ const filterCards = e => {
     })
 }
 
-
 filterIcon.forEach(button => button.addEventListener("click", filterCards))
-
 
 let pages = document.querySelector(".pages");
 let megaMenu = document.querySelector(".mega-menu");

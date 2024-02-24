@@ -77,3 +77,27 @@
     </div>
 </div>
 <button class="up bg-amber-600 hover:bg-amber-500 dark:bg-amber-700 dark:hover:bg-amber-600"><i class="fa-solid fa-angle-up"></i></button>
+
+<style>
+[data-id="loading-spinner"] {
+    position: fixed;
+    display: flex;
+    background: #353942;
+    width: 100%;
+    height: 100vh;
+    inset: 0;
+    z-index: 9000;
+    align-items: center;
+    justify-content: center;
+}
+.hide-spinner {
+    display: none !important;
+}
+</style>
+<div
+    data-id="loading-spinner"
+    -style="opacity: 1"
+    class=""
+>
+    <span class="loading loading-spinner text-info loading-lg"></span>
+</div>
