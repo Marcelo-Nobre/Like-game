@@ -207,6 +207,8 @@ let shopItemsData = [{
 let generatecards  = () => {
     return (cards.innerHTML = shopItemsData.map((x) => {
         let {img, name, date, dataName} = x;
+        let fixedImage = 'imgs/blog-01.png';
+        img = fixedImage;
         return `
         <div class="free" data-name="${dataName}">
             <div class="code">

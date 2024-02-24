@@ -109,26 +109,56 @@
                     ],
                     [
                         'type' => 'link',
-                        'url' => '#!',
+                        'url' => route('home'),
                         'label' => 'Home',
-                        'active' => true,
+                        'active' => \Route::currentRouteName() === 'home',
                         'show' => true,
+                        'new_tab' => false,
                         'sub_items' => [],
                     ],
                     [
                         'type' => 'link',
-                        'url' => '#!',
-                        'label' => 'Item',
-                        'active' => false,
+                        'url' => route('blog-grid'),
+                        'label' => 'Blog',
+                        'active' => \Route::currentRouteName() === 'blog-grid',
                         'show' => true,
+                        'new_tab' => false,
                         'sub_items' => [],
                     ],
                     [
                         'type' => 'link',
-                        'url' => '#!',
-                        'label' => 'Item',
-                        'active' => false,
+                        'url' => route('blog-single'),
+                        'label' => 'Post do blog',
+                        'active' => \Route::currentRouteName() === 'blog-single',
                         'show' => true,
+                        'new_tab' => false,
+                        'sub_items' => [],
+                    ],
+                    [
+                        'type' => 'link',
+                        'url' => route('sing-in'),
+                        'label' => 'Login',
+                        'active' => \Route::currentRouteName() === 'sing-in',
+                        'show' => true,
+                        'new_tab' => false,
+                        'sub_items' => [],
+                    ],
+                    [
+                        'type' => 'link',
+                        'url' => route('sing-up'),
+                        'label' => 'Registro',
+                        'active' => \Route::currentRouteName() === 'sing-up',
+                        'show' => true,
+                        'new_tab' => false,
+                        'sub_items' => [],
+                    ],
+                    [
+                        'type' => 'link',
+                        'url' => route('chat.room'),
+                        'label' => 'Chat WS',
+                        'active' => \Route::currentRouteName() === 'chat.room',
+                        'show' => true,
+                        'new_tab' => true,
                         'sub_items' => [],
                     ],
                 ] as $menuItem)
@@ -176,7 +206,7 @@
                             <a
                                 href="{{ $menuItem?->url ?? '#!' }}"
                                 title="{{ $menuItem?->label ?? '' }}"
-                                target="_blank"
+                                @if ($menuItem?->new_tab) target="_blank" @endif
                                 title="{{ $menuItem?->title ?? $menuItem?->label ?? '' }}"
                                 @class([
                                     'block',

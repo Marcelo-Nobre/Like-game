@@ -23,7 +23,7 @@
         'resources/js/app.js',
     ])
 </head>
-<body>
+<body data-theme="hflex">
 
     @include('layouts.content._partials.header')
 

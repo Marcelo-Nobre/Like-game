@@ -2,14 +2,34 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "keywords": [
+        "laravel",
+        "framework"
+    ],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "rezaamini-ir/laravel-easyblade",
+                "version": "dev-tiagof2/v0.6.x",
+                "source": {
+                    "type": "git",
+                    "branch": "tiagof2/v0.6.x",
+                    "reference": "tiagof2/v0.6.x",
+                    "url": "https://github.com/tiagofrancafernandes/laravel-easyblade"
+                }
+            }
+        }
+    ],
     "require": {
         "php": "^8.1",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "owenvoke/blade-fontawesome": "^2.5",
+        "rezaamini-ir/laravel-easyblade": "dev-tiagof2/v0.6.x",
         "pusher/pusher-php-server": "^7.2"
     },
     "require-dev": {
@@ -65,6 +85,6 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }

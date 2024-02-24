@@ -19,19 +19,17 @@ Route::get('/welcome', fn () => view('welcome'));
 
 Route::redirect('/', 'home');
 
-Route::get('/home', fn () => view('content.home'));
+Route::get('/home', fn () => view('content.home'))->name('home');
 
-Route::get('/blog-grid', fn () => view('content.blog-grid'));
+Route::get('/blog-grid', fn () => view('content.blog-grid'))->name('blog-grid');
 
-Route::get('/blog-single', fn () => view('content.blog-single'));
+Route::get('/blog-single', fn () => view('content.blog-single'))->name('blog-single');
 
-Route::get('/sing-in', fn () => view('content.sing-in'));
+Route::get('/sing-in', fn () => view('content.sing-in'))->name('sing-in');
 
-Route::get('/sing-up', fn () => view('content.sing-up'));
+Route::get('/sing-up', fn () => view('content.sing-up'))->name('sing-up');
 
-Route::get('chat/messages', fn () => view('chat.messages'));
-
-Route::prefix('chat')
+Route::prefix('chat')->name('chat.')
 // ->middleware([
 //     'auth', 'verified',
 // ])

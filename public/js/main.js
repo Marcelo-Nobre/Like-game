@@ -236,8 +236,12 @@ let shopItemsData = [{
 }]
 
 let generategallery  = () => {
-    return (gallery.innerHTML = shopItemsData.map((x) => {
+    return (gallery.innerHTML = shopItemsData.map((x, index) => {
         let {img, name, date, dataName} = x;
+
+        name = `Post Title #${dataName}`;
+        img = 'imgs/blog-01.png';
+        date = (new Date()).toLocaleString();
         return `
         <div class="free" data-name="${dataName}">
             <div class="code">

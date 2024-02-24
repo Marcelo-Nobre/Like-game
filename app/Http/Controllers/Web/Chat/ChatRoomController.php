@@ -21,7 +21,7 @@ class ChatRoomController extends Controller
 
         // If no room is assigned, generate a random room name.
         if (! $room->length() || $room?->toString() === 'room') {
-            return Redirect::route('room', ['room' => str(str()->random(10))->slug()]);
+            return Redirect::route('chat.room', ['room' => str(str()->random(10))->slug()]);
         }
 
         $messages = cache()->get('chat-room.' . $room, null);
@@ -32,7 +32,7 @@ class ChatRoomController extends Controller
 
         return view('chat.messages', [
             'room' => $room,
-            'link' => route('room', ['room' => $room]),
+            'link' => route('chat.room', ['room' => $room]),
             'sessionUser' => $sessionUser,
             'messages' => $messages,
         ]);

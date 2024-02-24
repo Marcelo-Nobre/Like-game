@@ -1,5 +1,5 @@
 <x-layouts.content>
-    <header class="relative flex items-center justify-center h-auto mb-12 overflow-hidden z-20">
+    <header class="relative flex items-center justify-center h-auto mb-0 overflow-hidden z-20">
         <div class="relative z-20 p-3 px-0 mx-0 w-full text-center py-24 lg:py-56 bg-gradient-to-t to-transparent from-black">
             <h1 class="mb-4 text-4xl font-bold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Administração de Concomínios</h1>
             <p class="mb-8 text-lg font-normal text-white lg:text-xl sm:px-16 lg:px-48">Conheça mais nossos serviços</p>
@@ -74,15 +74,127 @@
     </div>
 
     <div class="w-full bg-gray-900 py-6">
-        <h1 class="mb-4 text-4xl font-bold tracking-tight leading-none text-white text-center md:text-5xl lg:text-6xl">
-            Beneficios HFlex
-        </h1>
+        <div class="w-4/5 mx-auto">
+            <h1 class="mb-4 text-4xl font-bold tracking-tight leading-none text-white text-center md:text-5xl lg:text-6xl">
+                Central do Cliente HFlex
+            </h1>
+        </div>
 
-        <div class="flex justify-center py-2 space-x-6">
+        <div class="max-w-6xl px-3 mx-auto flex flex-col md:flex-row justfy-center gap-5">
+            @foreach ([
+                [
+                    'url' => '#central-do-cliente',
+                    'icon' => 'fas-file-pdf',
+                    'title' => 'E-mail',
+                    'label' => '2° Via Boleto',
+                    'subLabel' => 'Central do cliente',
+                    'show' => true,
+                ],
+                [
+                    'url' => 'mailto:crc@hflex.net.br',
+                    'icon' => 'far-envelope',
+                    'title' => 'E-mail',
+                    'label' => 'crc@hflex.net.br',
+                    'subLabel' => 'crc@hflex.net.br',
+                    'show' => true,
+                ],
+                [
+                    'url' => 'https://api.whatsapp.com/send/?phone=551138930000&text&type=phone_number&app_absent=0',
+                    'icon' => 'fab-whatsapp',
+                    'title' => 'WhatsApp',
+                    'label' => '(11) 3893-0000',
+                    'subLabel' => '(11) 3893-0000',
+                    'show' => true,
+                ],
+                [
+                    'url' => '#unidades',
+                    'icon' => 'far-map',
+                    'label' => 'Unidades',
+                    'subLabel' => 'Unidades',
+                    'show' => true,
+                ],
+
+        ] as $link)
+            @php
+                $link = fluent($link);
+            @endphp
+
+            @if (!$link?->show)
+                @continue
+            @endif
+            <a
+                href="#"
+                class="w-full md:w-2/5 sm:w-auto bg-amber-600 hover:bg-amber-500 focus:ring-4 focus:outline-none focus:ring-amber-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-amber-700 dark:hover:bg-amber-600 dark:focus:ring-amber-700"
+            >
+                @if ($link?->icon)
+                    @svg($link?->icon, 'me-3 w-7 h-7')
+                @endif
+
+                <div class="text-left rtl:text-right">
+                    <div class="-mt-1 font-sans text-sm font-semibold">
+                        {{ $link?->label ?? $link?->title ?? '' }}
+                    </div>
+
+                    @if ($link?->subLabel)
+                    <div class="mb-1 text-xs">{{ $link?->subLabel }}</div>
+                    @endif
+                </div>
+            </a>
+            @endforeach
+        </div>
+    </div>
+
+    <div class="w-full bg-gray-100 py-6">
+        <div class="w-4/5 mx-auto">
+            <h1 class="mb-4 text-4xl font-bold tracking-tight leading-none text-gray-900 text-center md:text-5xl lg:text-6xl">
+                Nossos Serviços
+            </h1>
+
+            <p class="mb-3 font-normal text-gray-700 text-2xl">
+                Temos mais de 20 anos de experiência no mercado de gestão de imóveis, com atendimento personalizado e serviços flexíveis. Como podemos ajudar você?
+            </p>
+        </div>
+
+        <div class="w-4/5 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 py-6">
             @foreach (range(1, 4) as $item)
-                <div class="max-w-56 p-2 bg-white border border-gray-200 rounded-lg shadow">
+                <div class="w-full md:max-w-56 mx-auto p-2 bg-white border border-gray-200 rounded-lg shadow">
                     <a href="#">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 text-center">Item 1</h5>
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 text-center">Item {{ $item }}</h5>
+                    </a>
+
+                    <div class="flex items-center justify-center">
+                        <hr class="border-b border-gray-700 w-5 mx-auto">
+                    </div>
+
+                    <p class="mb-3 font-normal text-gray-700">
+                        Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+                    </p>
+
+                    <div class="flex items-center justify-center">
+                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-amber-600 rounded-lg hover:bg-amber-700 focus:ring-4 focus:outline-none focus:ring-amber-300 dark:focus:ring-amber-800">
+                            Saber mais
+                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+
+    <div class="w-full bg-gray-900 py-6">
+        <div class="w-4/5 mx-auto">
+            <h1 class="mb-4 text-4xl font-bold tracking-tight leading-none text-white text-center md:text-5xl lg:text-6xl">
+                Beneficios HFlex
+            </h1>
+        </div>
+
+        <div class="w-4/5 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 py-6">
+            @foreach (range(1, 4) as $item)
+                <div class="w-full md:max-w-56 mx-auto p-2 bg-white border border-gray-200 rounded-lg shadow">
+                    <a href="#">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 text-center">Item {{ $item }}</h5>
                     </a>
 
                     <div class="flex items-center justify-center">
@@ -121,23 +233,35 @@
                 </div>
             </div>
             <div class="animate">
-                <h4>Why Choose Us</h4>
+                <h4>Porque escolher a HFlex</h4>
                 <h2>We Make Our customers happy by giving Best services.</h2>
                 <p>
                 It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
                 The point of using Lorem Ipsum.
                 </p>
                 <div class="work">
-                    <button class="btn" onclick="openVideo()">
-                        Watch
+                    <button
+                        class="inline-flex items-center px-3 py-2 font-medium text-center text-white bg-amber-600 rounded-lg hover:bg-amber-700 focus:ring-4 focus:outline-none focus:ring-amber-300 dark:focus:ring-amber-800 gap-x-3 text-2xl pb-3"
+                        onclick="openVideo()">
+                        Ver apresentação
+                        @svg('fab-youtube', 'me-3 w-7 h-7')
                     </button>
                     <div class="video">
-                        <iframe class="iframe" width="1280" height="720" src="https://www.youtube.com/embed/_zDZYrIUgKE" title="Dark Souls III - Opening Cinematic Trailer | PS4, XB1, PC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe
+                            class="iframe"
+                            width="1280"
+                            height="720"
+                            src="https://www.youtube.com/embed/QOhV1JvQKRg?si=PdeSLleqEXoO69xf"
+                            title="Enviando e-mails com o Laravel"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                        ></iframe>
                         <button onclick="closeVideo()" class="closeVideo">
                             <i class="fa-solid fa-close" style="cursor: pointer;"></i>
                         </button>
                     </div>
-                    <span class="span">SEE HOW WE WORK</span>
+                    <span class="span">Veja como trabalhamos</span>
                 </div>
             </div>
         </div>
@@ -196,49 +320,6 @@
             </div>
           </div>
         </div>
-    <div class="service">
-        <div class="container">
-            <div class="phasellus">
-                <h2>Nossos Serviços</h2>
-                <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor eros.
-                Donec vitae tortor lacus. Phasellus aliquam ante in maximus.
-                </p>
-            </div>
-            <div class="sections">
-                <div class="startups">
-                    <img src="{{ asset('imgs/icon-04.svg') }}" alt="">
-                    <h4>Crafted for Startups</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.</p>
-                </div>
-                <div class="startups">
-                    <img src="{{ asset('imgs/icon-05.svg') }}" alt="">
-                    <h4>High-quality Design</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.</p>
-                </div>
-                <div class="startups">
-                    <img src="{{ asset('imgs/icon-06.svg') }}" alt="">
-                    <h4>All Essential Sections</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.</p>
-                </div>
-                <div class="startups">
-                    <img src="{{ asset('imgs/icon-07.svg') }}" alt="">
-                    <h4>Speed Optimized</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.</p>
-                </div>
-                <div class="startups">
-                    <img src="{{ asset('imgs/icon-05.svg') }}" alt="">
-                    <h4>Fully Customizable</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.</p>
-                </div>
-                <div class="startups">
-                    <img src="{{ asset('imgs/icon-06.svg') }}" alt="">
-                    <h4>Regular Updates</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.</p>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="Starter">
         <img src="{{ asset('imgs/shape-06.svg') }}" alt="">
         <img src="{{ asset('imgs/shape-03.svg') }}" alt="">

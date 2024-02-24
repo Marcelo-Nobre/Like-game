@@ -5,7 +5,7 @@
                     <a href="#">
                         <div class="logo">
                             <img class="base-img" src="{{ asset('imgs/main-logo.png') }}" alt="">
-                            <h1>Base</h1>
+                            <h1>{{ config('app.name') }}</h1>
                         </div>
                     </a>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -71,9 +71,9 @@
                 <li><a href="#">Support</a></li>
             </ul>
             <div class="Support">
-                <p>© 2025 Base. All rights reserved</p>
+                <p>© {{ date('Y') }} {{ config('app.name') }}. All rights reserved</p>
             </div>
         </div>
     </div>
 </div>
-<button class="up"><i class="fa-solid fa-angle-up"></i></button>
+<button class="up bg-amber-600 hover:bg-amber-500 dark:bg-amber-700 dark:hover:bg-amber-600"><i class="fa-solid fa-angle-up"></i></button>

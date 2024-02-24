@@ -13,12 +13,12 @@
         <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body>
+    <body data-theme="mytheme">
         <div
             class="drawer-content flex flex-col"
             x-data="chatPageData"
         >
-            <div class="join join-vertical">
+            <div class="w-full h-screen">
                 <div class="navbar bg-blue-900 fixed top-0 pb-2 z-30">
                     <div class="flex-none">
                         <label for="side-menu" class="btn btn-square btn-ghost">
@@ -297,7 +297,7 @@
                             return;
                         }
 
-                        await fetch("{{ route('send.message') }}", {
+                        await fetch("{{ route('chat.send.message') }}", {
                             method: 'POST',
                             headers: {
                                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content'),
