@@ -3,6 +3,7 @@
 use App\Http\Controllers\Web\Chat\ChatRoomController;
 use App\Http\Controllers\Web\Chat\SendMessageController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,13 @@ Route::prefix('chat')->name('chat.')
     });
 
 Route::get('/demo/home', fn () => view('demo.home'));
+
+Route::get('/dashboard', fn () => view('dashboard'))->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__ . '/auth.php';

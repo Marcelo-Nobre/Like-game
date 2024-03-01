@@ -6,7 +6,7 @@ return [
 
         'fallback' => '',
 
-        'class' => '',
+        'class' => 'w-4 h-4',
 
         'attributes' => [
             // 'width' => 50,
@@ -19,7 +19,7 @@ return [
 
         'fallback' => '',
 
-        'class' => '',
+        'class' => 'w-4 h-4',
 
         'attributes' => [
             // 'width' => 50,
@@ -32,7 +32,7 @@ return [
 
         'fallback' => '',
 
-        'class' => '',
+        'class' => 'w-4 h-4',
 
         'attributes' => [
             // 'width' => 50,
@@ -160,7 +160,7 @@ return [
 
         'fallback' => '',
 
-        'class' => '',
+        'class' => 'w-4 h-4',
 
         'attributes' => [
             // 'width' => 50,
