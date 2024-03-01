@@ -113,24 +113,47 @@ if(getTheme == "DARK") {
 
 }
 
+function openVideo(trigger) {
+    if (!trigger) {
+        return;
+    }
 
+    let youtubeUrl = trigger.dataset.youtubeUrl;
 
+    if (!youtubeUrl) {
+        console.log('error', {
+            youtubeUrl,
+        });
+        return;
+    }
 
+    let videoConatainer = document.querySelector('.video');
+    let videoElement = videoConatainer.querySelector('[data-id="demo-video"]');
 
+    if (!videoConatainer || !videoElement) {
+        console.log('error #1:', videoElement, videoConatainer);
+        return;
+    }
 
+    videoElement.setAttribute('src', youtubeUrl);
 
-
-
-
-
-const video = document.querySelector(".video")
-function openVideo() {
-  video.classList.add("videoClicked")
-  document.body.style.setProperty("overflow", "hidden")
+    videoConatainer.classList.add("videoClicked");
+    document.body.style.setProperty("overflow", "hidden");
 }
+
 function closeVideo() {
-  video.classList.remove("videoClicked")
-  document.body.style.removeProperty("overflow")
+    let videoConatainer = document.querySelector('.video');
+    let videoElement = videoConatainer.querySelector('[data-id="demo-video"]');
+
+    if (!videoConatainer || !videoElement) {
+        console.log('error #2:', videoElement, videoConatainer);
+        return;
+    }
+
+    videoElement.removeAttribute('src');
+
+    videoConatainer.classList.remove("videoClicked");
+    document.body.style.removeProperty("overflow")
 }
 
 
@@ -281,20 +304,13 @@ const filterCards = e => {
 
 filterIcon.forEach(button => button.addEventListener("click", filterCards))
 
-let pages = document.querySelector(".pages");
 let megaMenu = document.querySelector(".mega-menu");
 
-pages.addEventListener("click", () => {
-    pages.classList.toggle("open")
-});
+document.querySelector(".pages")?.addEventListener("click", ev => ev.target.classList.toggle("open"));
 
-let toggles = document.querySelector(".toggles");
 let mainNav = document.querySelector(".main-nav");
 
-
-toggles.addEventListener("click", () => {
-    toggles.classList.toggle("toggle-menu");
-});
+document.querySelector(".toggles")?.addEventListener("click", ev => ev.target.classList.toggle("toggle-menu"));
 
 function check() {
     const checkbox = document.querySelector(".checkbox")

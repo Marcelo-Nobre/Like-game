@@ -4,7 +4,7 @@
             <h1 class="mb-4 text-4xl font-bold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Administração de Concomínios</h1>
             <p class="mb-8 text-lg font-normal text-white lg:text-xl sm:px-16 lg:px-48">Conheça mais nossos serviços</p>
             <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
-                <a href="#" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-full bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:ring-yellow-300 dark:focus:ring-yellow-900">
+                <a href="#" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-full bg-yellow-500 hover:bg-yellow-600 ring-0">
                     Iniciar aqui
                     <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
@@ -124,7 +124,7 @@
             @endif
             <a
                 href="#"
-                class="w-full md:w-2/5 sm:w-auto bg-amber-600 hover:bg-amber-500 focus:ring-4 focus:outline-none focus:ring-amber-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-amber-700 dark:hover:bg-amber-600 dark:focus:ring-amber-700"
+                class="w-full md:w-2/5 sm:w-auto bg-amber-600 hover:bg-amber-500 focus:ring-4 focus:outline-none focus:ring-amber-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-700"
             >
                 @if ($link?->icon)
                     @svg($link?->icon, 'me-3 w-7 h-7')
@@ -242,16 +242,18 @@
                 <div class="work">
                     <button
                         class="inline-flex items-center px-3 py-2 font-medium text-center text-white bg-amber-600 rounded-lg hover:bg-amber-700 focus:ring-4 focus:outline-none focus:ring-amber-300 dark:focus:ring-amber-800 gap-x-3 text-2xl pb-3"
-                        onclick="openVideo()">
+                        onclick="openVideo(this)"
+                        data-youtube-url="https://www.youtube.com/embed/QOhV1JvQKRg?si=PdeSLleqEXoO69xf"
+                    >
                         Ver apresentação
                         @svg('fab-youtube', 'me-3 w-7 h-7')
                     </button>
                     <div class="video">
                         <iframe
+                            data-id="demo-video"
                             class="iframe"
                             width="1280"
                             height="720"
-                            src="https://www.youtube.com/embed/QOhV1JvQKRg?si=PdeSLleqEXoO69xf"
                             title="Enviando e-mails com o Laravel"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

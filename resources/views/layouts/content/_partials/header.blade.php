@@ -60,7 +60,7 @@
 
     <div
         data-id="main-links"
-        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2"
     >
         <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img data-id="logo" src="{{ asset('imgs/HFlex-logo-branco.png') }}" class="h-16" alt="{{ config('app.name', '') }}" />

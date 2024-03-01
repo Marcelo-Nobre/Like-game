@@ -9,8 +9,9 @@
     {{-- <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" /> --}}
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
 
-    {{-- <link href="{{ asset('css/master.css') }}" rel="stylesheet" type="text/css"> --}}
-    {{-- <link href="{{ asset('css/all.min.css') }}" rel="stylesheet" type="text/css"> --}}
+    <link href="{{ asset('css/master.css') }}" rel="stylesheet" type="text/css">
+    {{-- <link href="{{ asset('css/font-awesome-free/6.2.0/all.min.css') }}" rel="stylesheet" type="text/css"> --}}
+    <link href="{{ asset('css/font-awesome-free/6.5.1/css/all.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/unpkg.com_swiper@10.2.0_swiper-bundle.min.css') }}" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

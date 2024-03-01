@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'env' => [
+        'showDevItems' => (bool) env('SHOW_DEV_ITEMS', false),
+    ],
     'pages' => [
         'profile' => [
             'form' => [
