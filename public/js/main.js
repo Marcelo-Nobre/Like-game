@@ -65,8 +65,7 @@ window.addEventListener("scroll", () => {
     shrink(mainLinks, false);
 })
 
-// Go to top
-window.onscroll = function () {
+globalThis.goToUpHandler = function () {
     let goToTopBtn = document.querySelector("button.up");
 
     if (!goToTopBtn) {
@@ -79,7 +78,11 @@ window.onscroll = function () {
     }
 
     goToTopBtn.classList.remove("time");
-}
+};
+
+// Go to top
+window.onscroll = globalThis.goToUpHandler
+
 
 document.querySelector("button.up")?.addEventListener('click', () => {
     window.scrollTo({
@@ -155,9 +158,6 @@ function closeVideo() {
     videoConatainer.classList.remove("videoClicked");
     document.body.style.removeProperty("overflow")
 }
-
-
-
 
 // filter
 
@@ -313,16 +313,35 @@ let mainNav = document.querySelector(".main-nav");
 document.querySelector(".toggles")?.addEventListener("click", ev => ev.target.classList.toggle("toggle-menu"));
 
 function check() {
-    const checkbox = document.querySelector(".checkbox")
-    const priceOne = document.querySelector(".One")
-    const priceTwo = document.querySelector(".Two")
-    const pricethere = document.querySelector(".Three")
-      if (checkbox.checked == true) {
+    const checkbox = document.querySelector(".checkbox");
+    const priceOne = document.querySelector(".One");
+    const priceTwo = document.querySelector(".Two");
+    const pricethere = document.querySelector(".Three");
+
+    if (checkbox.checked == true) {
         priceOne.innerHTML = "<div><h3>$149</h3>/per year</div>"
         priceTwo.innerHTML = "<div><h3>$608</h3>/per year</div>"
         pricethere.innerHTML = "<div><h3>$1568</h3>/per year</div>"
-      } else {
-        priceOne.innerHTML = "<div><h3>$29</h3>/per month</div>"
-        priceTwo.innerHTML = "<div><h3>$59</h3>/per month</div>"
-        pricethere.innerHTML = "<div><h3>$139</h3>/per month</div>"
-      };}
+        return;
+    }
+
+    priceOne.innerHTML = "<div><h3>$29</h3>/per month</div>"
+    priceTwo.innerHTML = "<div><h3>$59</h3>/per month</div>"
+    pricethere.innerHTML = "<div><h3>$139</h3>/per month</div>"
+}
+
+globalThis.tryRun = (func, ...params) => {
+    if (!func) {
+        return;
+    }
+
+    try {
+        return func(...params);
+    } catch (error) {
+        return;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    // globalThis.tryRun(globalThis.goToUpHandler);
+});

@@ -2300,7 +2300,7 @@ a.active {
 }
 button.up {
     right: -100px;
-    bottom: 4%;
+    /* bottom: 4%; */
     padding: 8px;
     border: none;
     color: white;
@@ -2312,7 +2312,7 @@ button.up {
     transition: 0.3s;
 }
 button.up.time {
-    bottom: 20px;
+    /* bottom: 20px; */
     right: 20px;
 }
 /* Blog Grid */
@@ -2322,9 +2322,6 @@ button.up.time {
     overflow: hidden;
     padding: 200px 0;
 }
-
-
-
 
 .grid .cards {
     /* display: flex;
