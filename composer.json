@@ -20,10 +20,16 @@
                     "url": "https://github.com/tiagofrancafernandes/laravel-easyblade"
                 }
             }
+        },
+        {
+            "type": "github",
+            "branch": "3.x-dev",
+            "url": "https://github.com/tiagofrancafernandes/laravel-site-options"
         }
     ],
     "require": {
         "php": "^8.1",
+        "arandu/laravel-site-options": "dev-3.x-dev",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
