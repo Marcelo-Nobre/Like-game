@@ -17,16 +17,24 @@ class SiteConfig
      */
     public static function get(?string $key = null, mixed $default = null): mixed
     {
-        return Option::get(
-            implode(
-                '.',
-                array_filter([
-                    'site_settings',
-                    $key,
-                ])
-            ),
-            $default
+        $key = implode(
+            '.',
+            array_filter([
+                'site_settings',
+                $key,
+            ])
         );
+
+        $firstKey = str_contains($key, '.') ? str($key)->before('.')->toString() : $key;
+        $afterKey = str_contains($key, '.') ? str($key)->after('.')->toString() : '';
+
+        $result = Option::get($firstKey);
+
+        return $afterKey ? Arr::get(
+            Arr::wrap($result),
+            $afterKey,
+            $default
+        ) : $result;
     }
 
     /**
