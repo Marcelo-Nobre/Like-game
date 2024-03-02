@@ -24,5 +24,10 @@ return [
     // Defaults can be overridden when calling `Option::get()`.
     'hard_defaults' => [
         // Example: 'option_name' => 'option_value',
+        'logo' => [
+            'default' => 'imgs/logo-dark.svg',
+            'dark' => 'imgs/logo-dark.svg',
+            'light' => 'imgs/logo-light.svg',
+        ],
     ],
 ];

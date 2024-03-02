@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Fluent;
 use Illuminate\Support\Facades\Auth;
+use App\Helpers\SiteConfig;
 
 if (!function_exists('fluent')) {
     /**
@@ -130,7 +131,7 @@ if (!function_exists('is_unserializable')) {
     {
         $data = is_string($data) ? trim($data) : null;
 
-        if (!$data || !(strlen($data) === 2 && $data === 'N;') || strlen($data) < 4) {
+        if (!$data || (strlen($data) === 2 && $data !== 'N;') || strlen($data) < 4) {
             return false;
         }
 
@@ -180,5 +181,29 @@ if (!function_exists('try_unserialize')) {
 
             return $defaultOnFail;
         }
+    }
+}
+
+if (!function_exists('siteConfig')) {
+    /**
+     * function siteConfig
+     *
+     * @param ?string $key
+     * @param mixed $default
+     *
+     * @return mixed
+     */
+    function siteConfig(?string $key = null, mixed $default = null): mixed
+    {
+        /**
+         * @var SiteConfig $siteConfig
+         */
+        $siteConfig = app(SiteConfig::class);
+
+        if (is_null($key)) {
+            return $siteConfig;
+        }
+
+        return $siteConfig->get($key, $default);
     }
 }

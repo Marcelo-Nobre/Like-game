@@ -1,5 +1,6 @@
 @php
     $showDevItems = config('meta-app.env.showDevItems', false);
+    $title = siteConfig('title', 'Laravel');
 @endphp
 
 <footer class="bg-white dark:bg-gray-900">
@@ -7,44 +8,62 @@
         <div class="mx-auto w-full max-w-screen-xl px-4 py-6 lg:py-8">
             <div class="grid grid-cols-4 gap-8 mb-3 md:mb-0 py-2">
                 <a href="https://flowbite.com/" class="flex items-center">
-                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">{{ config('app.name', 'Laravel') }}</span>
+                    @if ($darkLogo = siteConfig()->get('logo.light'))
+                        <img
+                            src="{{ asset($darkLogo) }}"
+                            class="h-8 me-3 dark:hidden"
+                            alt="{{ $title }}"
+                        />
+                    @endif
+
+                    @if ($darkLogo = siteConfig()->get('logo.dark'))
+                        <img
+                            src="{{ asset($darkLogo) }}"
+                            class="hidden h-8 me-3 dark:block"
+                            alt="{{ $title }}"
+                        />
+                    @endif
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">{{ $title }}</span>
                 </a>
             </div>
+
             <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3 py-2 pt-4 md:pt-24 md:pb-2">
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
-                    <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                        <li class="mb-4">
-                            <a href="https://flowbite.com/" class="hover:underline">{{ config('app.name', 'Laravel') }}</a>
-                        </li>
-                        <li>
-                            <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
-                    <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                        <li class="mb-4">
-                            <a href="https://github.com/themesberg/flowbite" class="hover:underline ">Github</a>
-                        </li>
-                        <li>
-                            <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Discord</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
-                    <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                        <li class="mb-4">
-                            <a href="#" class="hover:underline">Privacy Policy</a>
-                        </li>
-                        <li>
-                            <a href="#" class="hover:underline">Terms &amp; Conditions</a>
-                        </li>
-                    </ul>
-                </div>
+                @foreach (siteConfig()->get('footer_links') ?? [] as $linkItem)
+                    @if(!($linkItem['links'] ?? null))
+                        @continue
+                    @endif
+
+                    <div>
+                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+                            {{ $linkItem['title'] ?? null }}
+                        </h2>
+                        <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                            @foreach ($linkItem['links'] ?? [] as $link)
+                                @php
+                                    $link = fluent($link);
+                                @endphp
+
+                                @if (!$link?->show)
+                                    @continue
+                                @endif
+
+                                @php
+                                    $url = $link?->route ? route($link?->route, $link?->routeParams) : ($link?->url ?: '#!');
+                                @endphp
+
+                                <li>
+                                    <a
+                                        href="{{ $url }}"
+                                        class="flex hover:underline"
+                                    >
+                                        @if ($link?->icon) @svg($link?->icon, 'me-3 w-4 h-4') @endif
+                                        {{ $link?->label }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endforeach
             </div>
         </div>
 

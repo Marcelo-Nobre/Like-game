@@ -23,7 +23,6 @@
                     'label' => 'Unidades',
                     'show' => true,
                 ],
-
         ] as $socialMedia)
             @php
                 $socialMedia = fluent($socialMedia);
