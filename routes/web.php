@@ -21,14 +21,14 @@ Route::get('/welcome', fn () => view('welcome'));
 Route::redirect('/', 'home');
 
 Route::get('/home', fn () => view('content.home'))->name('home');
-
 Route::get('/blog-grid', fn () => view('content.blog-grid'))->name('blog-grid');
-
 Route::get('/blog-single', fn () => view('content.blog-single'))->name('blog-single');
 
-Route::get('/sing-in', fn () => view('content.sing-in'))->name('sing-in');
+// Route::get('/sign-in', fn () => view('content.sign-in'))->name('sign-in');
+// Route::get('/sign-up', fn () => view('content.sign-up'))->name('sign-up');
 
-Route::get('/sing-up', fn () => view('content.sing-up'))->name('sing-up');
+Route::redirect('/sign-in', 'login')->name('sign-in');
+Route::redirect('/sign-up', 'register')->name('sign-up');
 
 Route::prefix('chat')->name('chat.')
 // ->middleware([

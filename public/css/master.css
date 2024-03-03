@@ -2098,15 +2098,17 @@ a.active {
     color: white;
 }
 .dolor .started a {
-    color: #181c31;
     transition: 0.3s;
     font-weight: 500;
-    background-color: white;
     border-radius: 9999px;
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 12px;
     padding-bottom: 12px;
+}
+.dolor .started a.original {
+    color: #181c31;
+    background-color: white;
 }
 .dolor .container .started a:hover {
     box-shadow: 0 20px 25px -5px rgb(0 0 0 / 19%), 0 8px 10px -6px rgb(0 0 0 / 19%);

@@ -40,7 +40,7 @@ let logo = document.querySelector(".logo")
 
 
 
-let button = document.getElementsByClassName("sing-up")[0]
+let button = document.getElementsByClassName("sign-up")[0]
 
 let sing = document.querySelector(".sing a")
 
@@ -61,7 +61,7 @@ window.addEventListener("scroll", () => {
         header.setAttribute("class", "header")
         logo.style.marginTop = "12px"
 
-        button.setAttribute("class", "sing-up")
+        button.setAttribute("class", "sign-up")
         toggle.style.padding = "17px";
 
     }
@@ -123,7 +123,7 @@ const form = document.querySelector("form"),
         passInput = passFileld.querySelector(".password"),
         fullNameFiled = form.querySelector(".fullname-field"),
         fullNameInput = fullNameFiled.querySelector(".text")
-        
+
 // Email Validtion
 
 function checkEmail() {
@@ -189,7 +189,3 @@ form.addEventListener("submit", (e) => {
         location.href = form.getAttribute("action")
     }
 })
-
-
-
-

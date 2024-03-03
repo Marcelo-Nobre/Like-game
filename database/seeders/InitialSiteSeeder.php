@@ -19,6 +19,15 @@ class InitialSiteSeeder extends Seeder
     public static function initialData()
     {
         SiteConfig::set('title', config('app.name', 'Laravel'));
+        SiteConfig::set('footer_data', [
+            'copyright_text' => 'All Rights Reserved',
+        ]);
+
+        SiteConfig::set('page_auth_login', [
+            'allowed_gh_login' => false,
+            'allowed_tw_login' => false,
+        ]);
+
         SiteConfig::set('logo', [
             'default' => 'imgs/logo-dark.svg',
             'dark' => 'imgs/logo-dark.svg',
@@ -35,6 +44,7 @@ class InitialSiteSeeder extends Seeder
                 'icon' => null,
                 'label' => null,
                 'authOnly' => false,
+                'attributes' => [],
                 'guestOnly' => false,
                 'activeWhenRouteIn' => array_filter([
                     $linkInfo['route'] ?? null,
@@ -125,6 +135,42 @@ class InitialSiteSeeder extends Seeder
                     ]),
                 ]
             ],
+        ]);
+
+        SiteConfig::set('footer_banner', [
+            'show' => true, //TODO
+            'title' => 'Join with 5000+ Startups Growing with Base.',
+            'cta' => $genLink([
+                'label' => 'Get Started Now',
+                'route' => 'dashboard',
+                'icon' => 'mdi-monitor-dashboard',
+            ]),
+            'content' => html()->p(
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis nibh lorem. Duis sed odio lorem. In a efficitur leo. Ut venenatis rhoncus.'
+            )->__toString(),
+        ]);
+
+        SiteConfig::set('social_network_links', [
+            $genLink([
+                'url' => '#facebook',
+                'icon' => 'fab-facebook',
+                'label' => 'Facebook',
+            ]),
+            $genLink([
+                'url' => '#instagram',
+                'icon' => 'fab-instagram',
+                'label' => 'Instagram',
+            ]),
+            $genLink([
+                'url' => '#youtube',
+                'icon' => 'fab-youtube',
+                'label' => 'YouTube',
+            ]),
+            $genLink([
+                'url' => '#linkedin',
+                'icon' => 'fab-linkedin',
+                'label' => 'LinkedIn',
+            ]),
         ]);
 
         Artisan::call('cache:clear');

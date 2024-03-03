@@ -29,5 +29,8 @@ return [
             'dark' => 'imgs/logo-dark.svg',
             'light' => 'imgs/logo-light.svg',
         ],
+        'footer_data' => [
+            'copyright_text' => 'All Rights Reserved',
+        ],
     ],
 ];

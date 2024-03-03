@@ -44,5 +44,30 @@
                 {{ $slot }}
             </main>
         </div>
+        <style>
+            [data-id="loading-spinner"] {
+                position: fixed;
+                display: flex;
+                background: #353942;
+                width: 100%;
+                height: 100vh;
+                inset: 0;
+                z-index: 9000;
+                align-items: center;
+                justify-content: center;
+            }
+            .hide-spinner {
+                display: none !important;
+            }
+        </style>
+        <div
+            data-id="loading-spinner"
+            -style="opacity: 1"
+            class=""
+        >
+            <span class="loading loading-spinner text-info loading-lg"></span>
+        </div>
+
+        <script defer src="{{ asset('js/loading-spinner.js') }}"></script>
     </body>
 </html>

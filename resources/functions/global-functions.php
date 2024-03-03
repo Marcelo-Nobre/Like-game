@@ -3,14 +3,15 @@
 use Illuminate\Support\Fluent;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\SiteConfig;
+use Illuminate\Support\Arr;
 
 if (!function_exists('fluent')) {
     /**
      * function fluent
      */
-    function fluent(array|object $attributes = []): object
+    function fluent(array|object|null $attributes = []): object
     {
-        return new Fluent($attributes);
+        return new Fluent($attributes ?? []);
     }
 }
 
@@ -195,6 +196,16 @@ if (!function_exists('siteConfig')) {
      */
     function siteConfig(?string $key = null, mixed $default = null): mixed
     {
+        if (app()->environment(['test', 'testing'])) {
+            if (is_null($key)) {
+                return fluent(
+                    Arr::wrap(config('site-options.hard_defaults', []))
+                );
+            }
+
+            return Arr::get(Arr::wrap(config('site-options.hard_defaults', [])), $key) ?? $default;
+        }
+
         /**
          * @var SiteConfig $siteConfig
          */

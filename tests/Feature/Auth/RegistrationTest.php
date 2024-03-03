@@ -14,11 +14,17 @@ class RegistrationTest extends TestCase
     {
         $response = $this->get('/register');
 
-        $response->assertStatus(200);
+        $response->assertStatus(siteConfig('page_auth_login.allow_register') ? 200 : 404);
     }
 
     public function testNewUsersCanRegister(): void
     {
+        if (!siteConfig('page_auth_login.allow_register')) {
+            $this->markTestSkipped('Register is not allowed');
+
+            return;
+        }
+
         $response = $this->post('/register', [
             'name' => 'Test User',
             'email' => 'test@example.com',

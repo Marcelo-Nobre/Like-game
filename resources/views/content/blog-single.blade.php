@@ -85,19 +85,5 @@
         </div>
     </div>
 
-    <div class="dolor">
-        <img src="{{ asset('imgs/shape-16.svg') }}" alt="">
-        <div class="container">
-            <div class="growing">
-            <h2>Join with 5000+ Startups Growing with Base.</h2>
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis nibh lorem. Duis sed odio lorem. In a efficitur leo.
-            Ut venenatis rhoncus.
-            </p>
-            </div>
-            <div class="started" style="z-index: 2;">
-                <a href="#">Get Started Now</a>
-            </div>
-        </div>
-    </div>
+    <x-footer-banner />
 </x-layouts.content>
