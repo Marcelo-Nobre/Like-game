@@ -32,19 +32,34 @@ return [
         ],
         'admin' => [
             'top_menu' => [
-                'label' => 'Settings',
-                'subItems' => [
-                    [
-                        'route' => null,
-                        'url' => '#!',
-                        'icon' => null,
-                        'label' => 'Sub item 1',
+                [
+                    'label' => 'Dashboard',
+                    'route' => 'dashboard',
+                    'activeWhenRouteIn' => [
+                        'dashboard',
                     ],
-                    [
-                        'route' => null,
-                        'url' => '#!',
-                        'icon' => null,
-                        'label' => 'Sub item 2',
+                ],
+                [
+                    'label' => 'Site settings',
+                    'activeWhenRouteIn' => [
+                        // 'admin.config_site.edit', // TODO
+                        'profile.edit',
+                    ],
+                    'subItems' => [
+                        [
+                            'label' => 'Sub item 1',
+                            'route' => 'profile.edit',
+                            'activeWhenRouteIn' => [
+                                'profile.edit',
+                            ],
+                        ],
+                        [
+                            'label' => 'Sub item 2',
+                            'route' => 'profile.edit',
+                            'activeWhenRouteIn' => [
+                                'profile.edit',
+                            ],
+                        ],
                     ],
                 ],
             ],

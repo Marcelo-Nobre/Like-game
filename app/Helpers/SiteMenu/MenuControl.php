@@ -4,6 +4,7 @@ namespace App\Helpers\SiteMenu;
 
 use Illuminate\Support\Fluent;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Route;
 
 class MenuControl
 {
@@ -44,7 +45,9 @@ class MenuControl
                 'url' => '#!',
                 'icon' => null,
                 'label' => null,
+                'method' => null, // null|get|post|put|...
                 'authOnly' => false,
+                'translateLabel' => true,
                 'attributes' => [],
                 'guestOnly' => false,
                 'activeWhenRouteIn' => array_filter([
@@ -78,9 +81,117 @@ class MenuControl
                 continue;
             }
 
-            $items[] =  static::generateLink($item);
+            $items[] = static::generateLink($item);
         }
 
         return $items ?? [];
+    }
+
+    /**
+     * routeIs function
+     *
+     * @param string|null $routeToCheck  - Route to check. If null check current.
+     * @param array $route
+     * @param mixed ...$routes
+     *
+     * @return boolean
+     */
+    public static function routeIs(
+        ?string $routeToCheck = null,
+        string|array|null $route = [],
+        mixed ...$routes,
+    ): bool {
+        $routes = array_filter(
+            array_merge(
+                (array) $route,
+                [
+                    ...$routes,
+                ]
+            ),
+            fn ($item) => $item && is_string($item) && trim($item)
+        );
+
+        if (!$routes) {
+            return false;
+        }
+
+        $routeToCheck ??= Route::currentRouteName();
+
+        if (in_array($routeToCheck, $routes)) {
+            return true;
+        }
+
+        $partialRoutes = array_filter(
+            $routes,
+            fn ($item) => str_contains($item, '*')
+        );
+
+        foreach ($partialRoutes as $routeName) {
+            $onEnd = str_ends_with($routeName, '*');
+            $onStart = str_starts_with($routeName, '*');
+            $both = $onEnd && $onStart;
+
+            if ($both) {
+                if (str_contains($routeToCheck, str($routeName)->after('*')->before('*')->toString())) {
+                    return true;
+                }
+
+                continue;
+            }
+
+            if ($onEnd) {
+                if (str_starts_with($routeToCheck, str($routeName)->before('*')->toString())) {
+                    return true;
+                }
+
+                continue;
+            }
+
+            if ($onStart) {
+                if (str_ends_with($routeToCheck, str($routeName)->after('*')->toString())) {
+                    return true;
+                }
+
+                continue;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * isCurrent function
+     *
+     * @param mixed ...$routes
+     *
+     * @return boolean
+     */
+    public static function isCurrent(
+        mixed ...$routes,
+    ): bool {
+        return static::routeIs(
+            Route::currentRouteName(),
+            ...$routes,
+        );
+    }
+
+    public static function getUrlData(Fluent|array $linkInfo = []): Fluent
+    {
+        $linkInfo = is_a($linkInfo, Fluent::class) ? $linkInfo : fluent($linkInfo);
+
+        $isCurrent = static::isCurrent(...[
+            $linkInfo?->route,
+            ...((array) $linkInfo?->activeWhenRouteIn),
+        ]);
+
+        $url = ($linkInfo?->type === 'link' && $linkInfo?->route)
+            ? route($linkInfo?->route, $linkInfo?->routeParams)
+            : ($linkInfo?->url ?: '#!');
+
+        return fluent([
+            'current' => $isCurrent,
+            'active' => $isCurrent,
+            'url' => $url,
+        ]);
     }
 }

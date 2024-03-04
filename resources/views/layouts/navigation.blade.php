@@ -12,51 +12,106 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
+                    @foreach(\App\Helpers\SiteMenu\MenuControl::prepareMenuItems(config('meta-app.menu.admin.top_menu')) as $menuItem)
+                    @php
+                        $subItems = $menuItem?->subItems;
+                        $activeWhenRouteIn = (array) $menuItem?->activeWhenRouteIn;
+                        $isActive = \App\Helpers\SiteMenu\MenuControl::isCurrent(...$activeWhenRouteIn);
+                        $menuItem->active = (bool) $isActive;
+                        $menuItemUrlData = \App\Helpers\SiteMenu\MenuControl::getUrlData($menuItem);
+                        $menuItem->active = $menuItemUrlData?->active ?? false;
+                    @endphp
 
-                    <x-nav-link-dropdown
-                        :active="true"
-                        align="left"
-                        width="48">
-                        <x-slot name="trigger">
-                            <button
-                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                                <div>{{ Auth::user()->name }}</div>
+                    @if (!$menuItem?->show)
+                        @continue
+                    @endif
 
-                                <div class="ms-1">
-                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                            </button>
-                        </x-slot>
+                    @if ($subItems)
+                        <x-nav-link-dropdown
+                            :active="$menuItem?->active"
+                            align="left"
+                            width="48"
+                        >
+                            <x-slot name="trigger">
+                                <button
+                                    @class([
+                                        'inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium',
+                                        'rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700',
+                                        'dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150',
+                                    ])
+                                >
+                                    <div>
+                                        @if ($menuItem?->icon) @svg($menuItem?->icon, 'me-3 w-5 h-5 mr-2') @endif
+                                        {{ $menuItem?->translateLabel ? __($menuItem?->label) : $menuItem?->label }}
+                                    </div>
 
-                        <x-slot name="content">
-                            <x-dropdown-link :href="route('profile.edit')">
-                                {{ __('Profile') }}
-                            </x-dropdown-link>
+                                    <div class="ms-1">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </button>
+                            </x-slot>
 
-                            <x-dropdown-button
-                                data-switch-theme="true">
-                                {{ __('Switch color theme') }}
-                            </x-dropdown-button>
+                            <x-slot name="content">
+                                @foreach ($subItems as $subItem)
+                                    @if (!$subItem?->show)
+                                        @continue
+                                    @endif
 
-                            <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
+                                    @php
+                                        $subItemUrlData = \App\Helpers\SiteMenu\MenuControl::getUrlData($subItem);
+                                        $subItem->active = $subItemUrlData?->active ?? false;
+                                    @endphp
 
-                                <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                                    {{ __('Log Out') }}
-                                </x-dropdown-link>
-                            </form>
-                        </x-slot>
-                    </x-nav-link-dropdown>
+                                    @if ($subItem?->method && $subItemUrlData?->url != '#!')
+                                        @php
+                                            $method
+                                        @endphp
+
+                                        <!-- Authentication -->
+                                        <form
+                                            :method="in_array($subItem?->method, ['get', 'GET', 'post', 'POST']) ? $subItem?->method : 'POST'"
+                                            action="{{ route('logout') }}"
+                                        >
+                                            @if (!in_array($subItem?->method, ['get', 'GET', 'post', 'POST']))
+                                                @method($subItem?->method)
+                                            @endif
+
+                                            @csrf
+
+                                            <x-dropdown-link
+                                                :href="$subItemUrlData?->url"
+                                                onclick="event.preventDefault();
+                                                    this.closest('form').submit();"
+                                            >
+                                                {{ __('Log Out') }}
+                                            </x-dropdown-link>
+                                        </form>
+                                    @else
+                                        <x-dropdown-link
+                                            :href="$subItemUrlData?->url"
+                                            :active="$subItemUrlData?->active"
+                                        >
+                                            @if ($subItem?->icon) @svg($subItem?->icon, 'me-3 w-5 h-5 mr-2') @endif
+                                            {{ $subItem?->translateLabel ? __($subItem?->label) : $subItem?->label }}
+                                        </x-dropdown-link>
+                                    @endif
+                                @endforeach
+                            </x-slot>
+                        </x-nav-link-dropdown>
+                    @else
+                        <x-nav-link
+                            :href="$menuItemUrlData?->url"
+                            :active="$menuItemUrlData?->active"
+                        >
+                            @if ($menuItem?->icon) @svg($menuItem?->icon, 'me-3 w-5 h-5 mr-2') @endif
+                            {{ $menuItem?->translateLabel ? __($menuItem?->label) : $menuItem?->label }}
+                        </x-nav-link>
+                    @endif
+                    @endforeach
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -122,6 +177,61 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
+        @foreach(\App\Helpers\SiteMenu\MenuControl::prepareMenuItems(config('meta-app.menu.admin.top_menu')) as $menuItem)
+            @php
+                $subItems = $menuItem?->subItems;
+                $activeWhenRouteIn = (array) $menuItem?->activeWhenRouteIn;
+                $isActive = \App\Helpers\SiteMenu\MenuControl::isCurrent(...$activeWhenRouteIn);
+                $menuItem->active = (bool) $isActive;
+                $menuItemUrlData = \App\Helpers\SiteMenu\MenuControl::getUrlData($menuItem);
+                $menuItem->active = $menuItemUrlData?->active ?? false;
+            @endphp
+
+            @if (!$menuItem?->show)
+                @continue
+            @endif
+
+            @if ($subItems)
+                <div class="py-0 mb-1 space-y-1">
+                    <x-responsive-nav-link-dropdown>
+                        @if ($menuItem?->icon) @svg($menuItem?->icon, 'me-3 w-5 h-5 mr-2') @endif
+                        {{ $menuItem?->translateLabel ? __($menuItem?->label) : $menuItem?->label }}
+
+                        <x-slot name="dropdownItems">
+                            @foreach ($subItems as $subItem)
+                                @if (!$subItem?->show)
+                                    @continue
+                                @endif
+
+                                @php
+                                    $subItemUrlData = \App\Helpers\SiteMenu\MenuControl::getUrlData($subItem);
+                                    $subItem->active = $subItemUrlData?->active ?? false;
+                                @endphp
+
+                                @if ($subItem?->method && $subItemUrlData?->url != '#!')
+                                {{-- form ... --}}
+                                @else
+                                    <x-responsive-nav-link-dropdown-item
+                                        :href="$subItemUrlData?->url"
+                                        :active="$subItemUrlData?->active"
+                                    >
+                                        @if ($subItem?->icon) @svg($subItem?->icon, 'me-3 w-5 h-5 mr-2') @endif
+                                        {{ $subItem?->translateLabel ? __($subItem?->label) : $subItem?->label }}
+                                    </x-responsive-nav-link-dropdown-item>
+                                @endif
+                            @endforeach
+                        </x-slot>
+                    </x-responsive-nav-link-dropdown>
+                </div>
+            @else
+                <div class="py-0 mb-1 space-y-1">
+                    <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Dashboard') }}
+                    </x-responsive-nav-link>
+                </div>
+            @endif
+        @endforeach
+        {{--
         <div class="py-0 mb-1 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
@@ -131,7 +241,6 @@
         <div class="py-0 mb-1 space-y-1">
             <x-responsive-nav-link-dropdown>
                 aaaa
-
                 <x-slot name="dropdownItems">
                     <x-responsive-nav-link-dropdown-item>
                         <svg aria-hidden="true" class="h-3.5 w-3.5 rounded-full me-2" xmlns="http://www.w3.org/2000/svg"
@@ -159,5 +268,6 @@
                 </x-slot>
             </x-responsive-nav-link-dropdown>
         </div>
+        --}}
     </div>
 </nav>

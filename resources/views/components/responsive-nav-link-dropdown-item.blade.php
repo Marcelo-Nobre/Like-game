@@ -1,4 +1,5 @@
 @props([
+    'href',
     'active',
 ])
 
@@ -49,7 +50,8 @@ $classes = ($active ?? false)
 @endphp
 
 <li {{ $attributes->merge(['class' => "{$baseClass} {$classes}"]) }}>
-    <a href="#"
+    <a
+        href="{{ $href ?? '#!' }}"
         class="block w-full ps-3 pe-4 py-2"
         role="menuitem">
         <div class="inline-flex items-center">

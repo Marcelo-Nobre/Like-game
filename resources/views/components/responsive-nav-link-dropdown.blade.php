@@ -21,7 +21,7 @@
 </button>
 <!-- Dropdown -->
 <div
-    class="z-50 w-3/5 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700"
+    class="z-50 w-10/12 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700"
     id="{{ $id }}"
 >
     @if ($dropdownItems ?? null && !$dropdownItems->isEmpty())
