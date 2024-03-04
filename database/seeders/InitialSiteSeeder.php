@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Helpers\SiteConfig;
 use Illuminate\Support\Facades\Artisan;
+use App\Helpers\SiteMenu\MenuControl;
 
 class InitialSiteSeeder extends Seeder
 {
@@ -34,105 +35,85 @@ class InitialSiteSeeder extends Seeder
             'light' => 'imgs/logo-light.svg',
         ]);
 
-        $genLink = fn (array $linkInfo) => array_merge(
-            [
-                'type' => 'link', // link|button
-                'onclick' => null, // se type === button
-                'route' => null,
-                'routeParams' => [],
-                'url' => '#!',
-                'icon' => null,
-                'label' => null,
-                'authOnly' => false,
-                'attributes' => [],
-                'guestOnly' => false,
-                'activeWhenRouteIn' => array_filter([
-                    $linkInfo['route'] ?? null,
-                ]),
-                'show' => true, // Se deve mostrar o link
-            ],
-            $linkInfo
-        );
-
         SiteConfig::set('footer_links', [
             [
                 'title' => 'Redes Sociais',
                 'class' => null,
                 'links' => [
-                    $genLink([
+                    MenuControl::generateLink([
                         'url' => '#facebook',
                         'icon' => 'fab-facebook',
                         'label' => 'Facebook',
-                    ]),
-                    $genLink([
+                    ], true),
+                    MenuControl::generateLink([
                         'url' => '#instagram',
                         'icon' => 'fab-instagram',
                         'label' => 'Instagram',
-                    ]),
-                    $genLink([
+                    ], true),
+                    MenuControl::generateLink([
                         'url' => '#youtube',
                         'icon' => 'fab-youtube',
                         'label' => 'YouTube',
-                    ]),
-                    $genLink([
+                    ], true),
+                    MenuControl::generateLink([
                         'url' => '#linkedin',
                         'icon' => 'fab-linkedin',
                         'label' => 'LinkedIn',
-                    ]),
+                    ], true),
                 ],
             ],
             [
                 'title' => config('app.name', 'Site'),
                 'class' => null,
                 'links' => [
-                    $genLink([
+                    MenuControl::generateLink([
                         'label' => config('app.name', 'Site'),
                         'route' => 'home',
                         'icon' => 'mdi-monitor-dashboard',
-                    ]),
-                    $genLink([
+                    ], true),
+                    MenuControl::generateLink([
                         'label' => 'Dashboard',
                         'route' => 'dashboard',
                         'icon' => 'mdi-monitor-dashboard',
-                    ]),
-                    $genLink([
+                    ], true),
+                    MenuControl::generateLink([
                         'url' => 'mailto:crc@hflex.net.br',
                         'icon' => 'far-envelope',
                         'title' => 'E-mail',
                         'label' => 'crc@hflex.net.br',
-                    ]),
-                    $genLink([
+                    ], true),
+                    MenuControl::generateLink([
                         'url' => 'https://api.whatsapp.com/send/?phone=551138930000&text&type=phone_number&app_absent=0',
                         'icon' => 'fab-whatsapp',
                         'title' => 'WhatsApp',
                         'label' => '(11) 3893-0000',
-                    ]),
-                    $genLink([
+                    ], true),
+                    MenuControl::generateLink([
                         'url' => '#unidades',
                         'icon' => 'far-map',
                         'label' => 'Unidades',
-                    ]),
+                    ], true),
                 ],
             ],
             [
                 'title' => 'Para Clientes',
                 'class' => null,
                 'links' => [
-                    $genLink([
+                    MenuControl::generateLink([
                         'url' => '#unidades',
                         'icon' => 'far-map',
                         'label' => 'Unidades',
-                    ]),
-                    $genLink([
+                    ], true),
+                    MenuControl::generateLink([
                         'url' => '#2-via-boleto',
                         'icon' => 'mdi-monitor-dashboard',
                         'label' => '2° Via Boleto',
-                    ]),
-                    $genLink([
+                    ], true),
+                    MenuControl::generateLink([
                         'url' => '#area-do-cliente',
                         'icon' => 'mdi-monitor-dashboard',
                         'label' => 'Área do cliente',
-                    ]),
+                    ], true),
                 ]
             ],
         ]);
@@ -140,37 +121,37 @@ class InitialSiteSeeder extends Seeder
         SiteConfig::set('footer_banner', [
             'show' => true, //TODO
             'title' => 'Join with 5000+ Startups Growing with Base.',
-            'cta' => $genLink([
+            'cta' => MenuControl::generateLink([
                 'label' => 'Get Started Now',
                 'route' => 'dashboard',
                 'icon' => 'mdi-monitor-dashboard',
-            ]),
+            ], true),
             'content' => html()->p(
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis nibh lorem. Duis sed odio lorem. In a efficitur leo. Ut venenatis rhoncus.'
             )->__toString(),
         ]);
 
         SiteConfig::set('social_network_links', [
-            $genLink([
+            MenuControl::generateLink([
                 'url' => '#facebook',
                 'icon' => 'fab-facebook',
                 'label' => 'Facebook',
-            ]),
-            $genLink([
+            ], true),
+            MenuControl::generateLink([
                 'url' => '#instagram',
                 'icon' => 'fab-instagram',
                 'label' => 'Instagram',
-            ]),
-            $genLink([
+            ], true),
+            MenuControl::generateLink([
                 'url' => '#youtube',
                 'icon' => 'fab-youtube',
                 'label' => 'YouTube',
-            ]),
-            $genLink([
+            ], true),
+            MenuControl::generateLink([
                 'url' => '#linkedin',
                 'icon' => 'fab-linkedin',
                 'label' => 'LinkedIn',
-            ]),
+            ], true),
         ]);
 
         Artisan::call('cache:clear');

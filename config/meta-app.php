@@ -26,4 +26,28 @@ return [
             ],
         ],
     ],
+    'menu' => [
+        'front_end' => [
+            'top_menu' => [],
+        ],
+        'admin' => [
+            'top_menu' => [
+                'label' => 'Settings',
+                'subItems' => [
+                    [
+                        'route' => null,
+                        'url' => '#!',
+                        'icon' => null,
+                        'label' => 'Sub item 1',
+                    ],
+                    [
+                        'route' => null,
+                        'url' => '#!',
+                        'icon' => null,
+                        'label' => 'Sub item 2',
+                    ],
+                ],
+            ],
+        ],
+    ],
 ];
